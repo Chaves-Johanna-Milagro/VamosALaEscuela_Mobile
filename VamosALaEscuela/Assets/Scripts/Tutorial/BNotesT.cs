@@ -13,6 +13,8 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
     private GameObject _check; // pa mostra q se marca un check al cumplir on objetivo
 
     private GuiaAftonT _gAftonT;
+
+    private bool _isCheckActive = false;
     void Start()
     {
         _count = transform.childCount;
@@ -39,6 +41,7 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
             _isActive = false;
             StopSound("ButtonNotes");
             Objts(false);
+            _check.SetActive(false);
         }
     }
     private void Toggle()
@@ -48,6 +51,7 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
         if (_isActive) PlaySound("ButtonNotes");
         if (_isActive == false) StopSound("ButtonNotes");
         Objts(_isActive);
+        if (_isCheckActive) _check.SetActive(_isActive);
     }
 
     private void Objts(bool active)
@@ -58,16 +62,6 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
             _childs[i].SetActive(active);
         }
 
-        // Si los hijos se desactivan, también ocultamos el check
-        if (!active && _check != null)
-            _check.SetActive(false);
-    }
-
-    public void ActiveCheckTuto()
-    {
-        // Activar solo si los demás objetos están activos
-        if (_isActive && _check != null)
-            _check.SetActive(true);
     }
 
     public void PlaySound(string name)
@@ -89,4 +83,5 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
         }
     }
 
+    public void ActiveCheckTuto() { _isCheckActive = true; }
 }
