@@ -45,6 +45,11 @@ public class PlayerMove : MonoBehaviour
     {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
         worldPos.z = transform.position.z;
+
+        // Limitar el movimiento
+        worldPos.x = Mathf.Clamp(worldPos.x, -20f, 20f);
+        worldPos.y = Mathf.Clamp(worldPos.y, -8f, 8f);
+
         _targetPos = worldPos;
         _isMoving = true;
     }

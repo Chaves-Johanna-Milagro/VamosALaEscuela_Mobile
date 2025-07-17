@@ -16,19 +16,19 @@ public class GuiaAftonT : MonoBehaviour
 
     private string[] _guiasText = new string[]
     {
-        "HOLA SOY AFTON Y TE VOY A GUIAR EN ESTA AVENTURA!",//audio tuto6
+        "HOLA, SOY AFTON Y TE VOY A GUIAR EN ESTA AVENTURA!",//audio tuto6
 
-        "PARA MOVERTE HAZ CLICK A DONDE QUIERAS IR!",  //audio tuto1
-        "PARA INTERACTUAR CON ALGO HAZ CLICK EN EL OBJETO!",//audio tuto2
+        "PARA MOVERTE TOCA A DONDE QUIERAS IR!",  //audio tuto1
+        "PARA INTERACTUAR CON ALGO TOCA EL OBJETO!",//audio tuto2
 
-        "VEAMOS PARA QUE SIRVEN LOS BOTONES!",//audio tuto7
+        "¡VEAMOS PARA QUE SIRVEN LOS BOTONES!",//audio tuto7
 
-        "SI QUIERES DESCANZAR UN RATO PUEDES HACER CLICK AQUI",//audio tuto8
+        "SI QUIERES DESCANZAR UN RATO PUEDES TOCAR AQUI",//audio tuto8
         "SI NO SABES QUÉ HACER ÉSTA LIBRETA TE AYUDARÁ!",//audio tuto3
         "ESTE MEDIDOR MOSTRARÁ QUE TAN BIEN TE COMPORTAS. COMPLETA LOS OBJETIVOS Y  HAZ BUENAS ACCIONES PARA QUE AUMENTE!",//audio tuto5
         "YO TAMBIEN ESTOY AQUI SI LO NECESITAS",//audio tuto4
         
-        "ESO ES TODO BUENA SUERTE"//audio tuto9
+        "¡ESO ES TODO, BUENA SUERTE!"//audio tuto9
     };
 
     private AudioSource[] _aGuias; //audios guia
@@ -110,7 +110,7 @@ public class GuiaAftonT : MonoBehaviour
         }
 
         // Al terminar la guía, cambiar de escena
-        SceneManager.LoadScene("Morning2.0");
+        //SceneManager.LoadScene("Morning2.0");
     }
 
     public bool IsActiveGuia() { return _isGuiaActive; } //

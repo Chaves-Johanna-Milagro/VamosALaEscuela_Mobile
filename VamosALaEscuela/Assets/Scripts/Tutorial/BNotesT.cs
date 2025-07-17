@@ -10,9 +10,9 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
 
     private Button _bNotes;
 
-    private GameObject _check1; // pa mostra q se marca un check al cumplir on objetivo
+    private GameObject _check; // pa mostra q se marca un check al cumplir on objetivo
 
-    //private GuiaAftonT _gAftonT;
+    private GuiaAftonT _gAftonT;
     void Start()
     {
         _count = transform.childCount;
@@ -27,20 +27,19 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
         _bNotes = GetComponent<Button>();
         _bNotes.onClick.AddListener(Toggle);
 
-        Transform childCheck = transform.Find("Check1");
-        _check1 = childCheck.transform.Find("Image").gameObject;
-        _check1.SetActive(false);
+        _check = transform.Find("Check").gameObject;
+        _check.SetActive(false);
 
-        //_gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
+        _gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
     }
     private void Update()
     {
-        /*if (_gAftonT.IsActiveGuia() && _isActive)
+        if (_gAftonT.IsActiveGuia() && _isActive)
         {
             _isActive = false;
             StopSound("ButtonNotes");
             Objts(false);
-        }*/
+        }
     }
     private void Toggle()
     {
@@ -53,11 +52,24 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
 
     private void Objts(bool active)
     {
-        for (int i = 0; i < _count; i++) // desativar al clikear
+        for (int i = 0; i < _count; i++)
         {
+            if (_childs[i] == _check) continue; // Saltear el check
             _childs[i].SetActive(active);
         }
+
+        // Si los hijos se desactivan, también ocultamos el check
+        if (!active && _check != null)
+            _check.SetActive(false);
     }
+
+    public void ActiveCheckTuto()
+    {
+        // Activar solo si los demás objetos están activos
+        if (_isActive && _check != null)
+            _check.SetActive(true);
+    }
+
     public void PlaySound(string name)
     {
         AudioSource[] sounds = GetComponents<AudioSource>();
@@ -77,9 +89,4 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
         }
     }
 
-
-    public void ActiveCheckTuto()
-    {
-        if (_check1 != null) _check1.SetActive(true);
-    }
 }

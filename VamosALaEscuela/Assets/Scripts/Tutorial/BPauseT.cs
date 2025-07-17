@@ -10,7 +10,7 @@ public class BPauseT : MonoBehaviour
 
     private Button _bNotes;
 
-    //private GuiaAftonT _gAftonT;
+    private GuiaAftonT _gAftonT;
 
     void Start()
     {
@@ -26,15 +26,15 @@ public class BPauseT : MonoBehaviour
         _bNotes = GetComponent<Button>();
         _bNotes.onClick.AddListener(Toggle);
 
-        //_gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
+        _gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
     }
     private void Update()
     {
-        /*if (_gAftonT.IsActiveGuia() && _isActive)
+        if (_gAftonT.IsActiveGuia() && _isActive)
         {
             _isActive = false;
             Objts(false);
-        }*/
+        }
     }
     private void Toggle()
     {

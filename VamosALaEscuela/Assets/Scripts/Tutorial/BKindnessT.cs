@@ -16,7 +16,7 @@ public class BKindnessT : MonoBehaviour //pa la barrita de amabilidad del tutori
     private Vector2 _posNow;
     private float _amount = 50f;
 
-    //private GuiaAftonT _gAftonT;
+    private GuiaAftonT _gAftonT;
     void Start()
     {
         _count = transform.childCount;
@@ -35,16 +35,16 @@ public class BKindnessT : MonoBehaviour //pa la barrita de amabilidad del tutori
 
         _posNow = _nowBar.anchoredPosition;
 
-        //_gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
+        _gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
     }
     private void Update()
     {
-        /*if (_gAftonT.IsActiveGuia() && _isActive)
+        if (_gAftonT.IsActiveGuia() && _isActive)
         {
             _isActive = false;
             StopSound("ButtonKindness");
             Objts(false);
-        }*/
+        }
     }
     private void Toggle()
     {

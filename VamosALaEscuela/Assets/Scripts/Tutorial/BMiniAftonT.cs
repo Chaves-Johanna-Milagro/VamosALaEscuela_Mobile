@@ -13,7 +13,7 @@ public class BMiniAftonT : MonoBehaviour // pa el boton mini afton del tutorial
 
     private TextMeshProUGUI _textComp;
 
-    //private GuiaAftonT _gAftonT; 
+    private GuiaAftonT _gAftonT; 
     void Start()
     {
         _count = transform.childCount;
@@ -31,16 +31,16 @@ public class BMiniAftonT : MonoBehaviour // pa el boton mini afton del tutorial
         _textComp = transform.Find("Text").GetComponent<TextMeshProUGUI>();
         _textComp.text = "TE DARE UNOS CONCEJOS CUANDO QUIERAS";
 
-        //_gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
+        _gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
     }
     private void Update()
     {
-        /*if (_gAftonT.IsActiveGuia() && _isActive)
+        if (_gAftonT.IsActiveGuia() && _isActive)
         {
             _isActive = false;
             StopSound("Afton");
             Objts(false);
-        }*/
+        }
     }
     private void Toggle()
     {
