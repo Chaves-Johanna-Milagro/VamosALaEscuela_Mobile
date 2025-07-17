@@ -4,12 +4,12 @@ public class PlayerMove : MonoBehaviour
 {
     private float speed = 20f;
 
-    private Vector3 _targetPosition;
+    private Vector3 _targetPos;
     private bool _isMoving = false;
 
     private void Start()
     {
-        _targetPosition = transform.position;
+        _targetPos = transform.position;
     }
 
     private void Update()
@@ -18,35 +18,38 @@ public class PlayerMove : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
             if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved)
             {
-                Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPos.z = transform.position.z; // mantener la profundidad del personaje
-                _targetPosition = touchPos;
-                _isMoving = true;
+                SetTargetPos(touch.position);
             }
         }
 
         //  Click en PC para testear en el editor
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = transform.position.z;
-            _targetPosition = mousePos;
-            _isMoving = true;
+            SetTargetPos(Input.mousePosition);
         }
 
         // Movimiento suave hacia el target
         if (_isMoving)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _targetPos, speed * Time.deltaTime);
 
-            // Parar si llegó
-            if (Vector3.Distance(transform.position, _targetPosition) < 0.05f)
-            {
-                _isMoving = false;
-            }
+            // Parar si llegó o esta en la ui
+            if (Vector3.Distance(transform.position, _targetPos) < 0.05f || 
+                ClickInUIStatus.IsPointerOverUI_PC() ||
+                ClickInUIStatus.IsPointerOverUI_Mobile()) _isMoving = false;
+         
         }
     }
+    private void SetTargetPos(Vector3 screenPos)
+    {
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+        worldPos.z = transform.position.z;
+        _targetPos = worldPos;
+        _isMoving = true;
+    }
+
+    public Vector3 NextPos() {  return _targetPos;  }
+    public bool IsMoving() {  return _isMoving;  }
 }
