@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Backgrounds
+    uniqueID: 2683583917
+    locked: 0
+  - name: InteractiveObjs
+    uniqueID: 4070677357
+    locked: 0
+  - name: Player
+    uniqueID: 2318835537
+    locked: 0
+  - name: MiniGames
+    uniqueID: 1300406945
+    locked: 0
+  - name: Decisions
+    uniqueID: 1173415487
+    locked: 0
+  m_RenderingLayers:
+  - Default
