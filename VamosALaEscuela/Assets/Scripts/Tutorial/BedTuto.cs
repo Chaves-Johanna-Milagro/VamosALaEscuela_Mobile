@@ -9,6 +9,8 @@ public class BedTuto : MonoBehaviour
 
     private BNotesT _bNotes;
     private BKindnessT _bKind;
+
+    private bool _maked = false; //pa controla que la toca una vez
     private void Start()
     {
         _incomp = transform.Find("Incomplete").gameObject;
@@ -25,6 +27,8 @@ public class BedTuto : MonoBehaviour
 
     public void Update()
     {
+        if (_maked) return;
+
         if (Input.GetMouseButtonDown(0) && !(ClickInUIStatus.IsPointerOverUI_PC() || ClickInUIStatus.IsPointerOverUI_Mobile())) // click o toque
         {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -38,6 +42,8 @@ public class BedTuto : MonoBehaviour
 
                 _bNotes.ActiveCheckTuto();
                 _bKind.UpBarKindTuto();
+
+                _maked = true;
             }
         }
     }
