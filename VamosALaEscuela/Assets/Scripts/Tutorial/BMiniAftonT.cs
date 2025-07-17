@@ -29,7 +29,7 @@ public class BMiniAftonT : MonoBehaviour // pa el boton mini afton del tutorial
         _bNotes.onClick.AddListener(Toggle);
 
         _textComp = transform.Find("Text").GetComponent<TextMeshProUGUI>();
-        _textComp.text = "TE DARE UNOS CONCEJOS CUANDO QUIERAS";
+        _textComp.text = "TE DARE UNOS CONSEJOS CUANDO QUIERAS";
 
         _gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
     }

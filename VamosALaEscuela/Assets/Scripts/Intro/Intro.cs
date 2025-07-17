@@ -47,7 +47,7 @@ public class Intro : MonoBehaviour
         yield return StartCoroutine(FadeSequence(_cImg1, _aImg1));
         yield return StartCoroutine(FadeSequence(_cImg2, _aImg2));
         yield return StartCoroutine(FadeSequence(_cImg3, _aImg3));
-        //SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Tutorial");
     }
 
     private IEnumerator FadeSequence(GameObject root, AudioSource audio)

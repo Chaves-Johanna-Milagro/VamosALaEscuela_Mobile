@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.InputManagerEntry;
 
 public class BKindnessT : MonoBehaviour //pa la barrita de amabilidad del tutorial
 {
@@ -81,7 +80,7 @@ public class BKindnessT : MonoBehaviour //pa la barrita de amabilidad del tutori
         }
     }
 
-    public void UpBarKindnessTuto()//pa que suba al completa el objetivo
+    public void UpBarKindTuto()//pa que suba al completa el objetivo
     {
         float newPosY = _posNow.y + _amount;
 

@@ -16,7 +16,7 @@ public class GAftonAnimT : MonoBehaviour
     {
         if (_gAfton.IsActiveGuia())
         {
-            if (_gAfton.GetCurrentAnim() == 4) _anim.SetBool("G_Buttons",true);
+            if (_gAfton.GetCurrentAnim() == 3) _anim.SetBool("G_Buttons",true);
         }
     }
 }
