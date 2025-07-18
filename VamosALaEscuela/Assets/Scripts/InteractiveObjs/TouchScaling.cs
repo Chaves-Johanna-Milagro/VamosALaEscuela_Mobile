@@ -25,14 +25,14 @@ public class TouchScaling : MonoBehaviour
         _isScaling = false;
 
         // Para PC / Editor
-        if (Input.GetMouseButton(0) && !ClickInUIStatus.IsPointerOverUI_PC())
+        if (Input.GetMouseButton(0) && !TouchInUIStatus.IsPointerOverUI_PC())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastCheck(ray);
         }
 
         // Para Mobile
-        if (Input.touchCount > 0 && !ClickInUIStatus.IsPointerOverUI_Mobile())
+        if (Input.touchCount > 0 && !TouchInUIStatus.IsPointerOverUI_Mobile())
         {
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)

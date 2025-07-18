@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public static class ClickInUIStatus  //pa detecta si el cursor esta sobre la ui en pc o se toco en mobile
+public static class TouchInUIStatus  //pa detecta si el cursor esta sobre la ui en pc o se toco en mobile
 {
     // Método para PC / Editor
     public static bool IsPointerOverUI_PC()
