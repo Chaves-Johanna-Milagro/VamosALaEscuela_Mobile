@@ -33,8 +33,10 @@ public class Intro : MonoBehaviour
         _aImg2 = _cImg2.GetComponent<AudioSource>();
         _aImg3 = _cImg3.GetComponent<AudioSource>();
 
-        if (PlayerNameStatus.GetName() == "") _cText1.text = "AFTON:" + "\n   BUENOS DIAS FREDDY" + "! \n   YA ES HORA DE LEVANTARSE!!!";
-        if (PlayerNameStatus.GetName() != "") _cText1.text = "AFTON:" + "\n   BUENOS DIAS " + PlayerNameStatus.GetName() + "! \n   YA ES HORA DE LEVANTARSE!!!";
+        string name = PlayerNameStatus.GetName();
+
+        if (name == "" || string.IsNullOrEmpty(name)) _cText1.text = "AFTON:" + "\n   BUENOS DIAS FREDDY" + "! \n   YA ES HORA DE LEVANTARSE!!!";
+        else _cText1.text = "AFTON:" + "\n   BUENOS DIAS " + PlayerNameStatus.GetName() + "! \n   YA ES HORA DE LEVANTARSE!!!";
 
         _cText2.text = "AFTON:" + "\n   VAMOS! ARRIBA! ARRIBA! " + "\n   QUE LLEGARAS TARDE";
 

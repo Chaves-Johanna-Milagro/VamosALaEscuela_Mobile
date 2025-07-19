@@ -55,9 +55,19 @@ public class TouchScaling : MonoBehaviour
             if (!_isScaling && _hoverButton != null && !_hoverButton.isPlaying)
             {
                 //_hoverButton.Play();
+                PlaySound("MenuButton");
                 _hoverButton.volume = 0.3f;
             }
             _isScaling = true;
+        }
+    }
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
         }
     }
 }
