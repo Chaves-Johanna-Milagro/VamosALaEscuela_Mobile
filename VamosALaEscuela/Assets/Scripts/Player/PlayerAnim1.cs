@@ -15,6 +15,8 @@ public class PlayerAnim1 : MonoBehaviour
 
     private void Update()
     {
+        if (PauseStatus.IsPaused()) return;
+
         if (_pMove.IsMoving())
         {
             Vector3 targetPos = _pMove.NextPos();

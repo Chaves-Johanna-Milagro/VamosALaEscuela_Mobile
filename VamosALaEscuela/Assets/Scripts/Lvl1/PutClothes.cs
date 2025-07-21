@@ -24,6 +24,8 @@ public class PutClothes : MonoBehaviour//version mobile
     // Update is called once per frame
     void Update()
     {
+        if (PauseStatus.IsPaused()) return;
+
         if (_isTouched) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;

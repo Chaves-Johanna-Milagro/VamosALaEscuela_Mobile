@@ -26,6 +26,8 @@ public class MGBathroom : MonoBehaviour//version mobile
     // Update is called once per frame
     void Update()
     {
+        if (PauseStatus.IsPaused()) return;
+
         if (_isCompleted) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;

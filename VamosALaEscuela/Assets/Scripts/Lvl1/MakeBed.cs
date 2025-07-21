@@ -35,6 +35,8 @@ public class MakeBed : MonoBehaviour//version mobile
     // Update is called once per frame
     private void Update()
     {
+        if (PauseStatus.IsPaused()) return;
+
         if (_isCliked) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;

@@ -20,6 +20,8 @@ public class TouchScaling : MonoBehaviour //version mobile
 
     private void Update()
     {
+        if (PauseStatus.IsPaused()) return;
+
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
 
         if (CinematicStatus.IsActiveCinematic()) return;

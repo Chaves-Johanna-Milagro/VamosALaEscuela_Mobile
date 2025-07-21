@@ -19,6 +19,8 @@ public class BrushTeeth : MonoBehaviour//version mobile
     // Update is called once per frame
     void Update()
     {
+        if (PauseStatus.IsPaused()) return;
+
         if (_completed || !_isTouching) return;
 
         _timer += Time.deltaTime;
