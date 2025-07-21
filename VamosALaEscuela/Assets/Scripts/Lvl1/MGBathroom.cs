@@ -27,7 +27,7 @@ public class MGBathroom : MonoBehaviour//version mobile
         _notes = Object.FindFirstObjectByType<BNotes>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (PauseStatus.IsPaused()) return;
@@ -64,7 +64,7 @@ public class MGBathroom : MonoBehaviour//version mobile
 
         _mouthC.SetActive(true);
         _mouthD.SetActive(false);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         _notes.ActiveCheck3();//activamos el check
 

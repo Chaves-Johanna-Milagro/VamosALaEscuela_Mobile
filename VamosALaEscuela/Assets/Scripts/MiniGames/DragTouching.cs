@@ -28,9 +28,7 @@ public class DragTouching : MonoBehaviour//version mobile
         }
         else if (Input.GetMouseButton(0) && isDragging)
         {
-            Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            worldMousePos.z = 0;
-            transform.position = worldMousePos + offset;
+            LimitMove(Input.mousePosition);
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -60,9 +58,7 @@ public class DragTouching : MonoBehaviour//version mobile
                 case TouchPhase.Moved:
                     if (isDragging)
                     {
-                        Vector3 worldTouchPos = Camera.main.ScreenToWorldPoint(touchPos);
-                        worldTouchPos.z = 0;
-                        transform.position = worldTouchPos + offset;
+                        LimitMove(touchPos);
                     }
                     break;
 
@@ -73,6 +69,17 @@ public class DragTouching : MonoBehaviour//version mobile
             }
         }
 #endif
+    }
+    void LimitMove(Vector3 inputPos)
+    {
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(inputPos) + offset;
+        worldPos.z = 0;
+
+        // limita dentro del rango permitido
+        float limitX = Mathf.Clamp(worldPos.x, -18f, 18f);
+        float limitY = Mathf.Clamp(worldPos.y, -10f, 10f);
+
+        transform.position = new Vector3(limitX, limitY, 0);
     }
 
 }
