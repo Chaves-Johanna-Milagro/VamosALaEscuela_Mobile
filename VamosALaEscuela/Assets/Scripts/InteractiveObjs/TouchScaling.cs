@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TouchScaling : MonoBehaviour
+public class TouchScaling : MonoBehaviour //version mobile
 {
     private float _scaleMultiplier = 1.1f;
     private float _scaleSpeed = 5f;
@@ -10,54 +10,63 @@ public class TouchScaling : MonoBehaviour
 
     private bool _isScaling = false;
 
-    private AudioSource _hoverButton;
-
+    private bool _isPlaying = false; //pa que no estre en bucle el sonido
     private void Start()
     {
         _originalScale = transform.localScale;
         _targetScale = _originalScale * _scaleMultiplier;
 
-        _hoverButton = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
+        if (PauseStatus.IsPaused()) return;
+
+        if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
+
+        if (CinematicStatus.IsActiveCinematic()) return;
+
+        if (MiniGameStatus.IsActiveMiniGame()) return;
+
         _isScaling = false;
 
-        // Para PC / Editor
-        if (Input.GetMouseButton(0) && !ClickInUIStatus.IsPointerOverUI_PC())
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastCheck(ray);
-        }
+        // Detectar toque o clic válido
+        bool touched = Input.GetMouseButton(0) ||
+                       (Input.touchCount > 0 &&
+                       Input.GetTouch(0).phase == TouchPhase.Began); // || //began para el primer toque
+                       // Input.GetTouch(0).phase == TouchPhase.Stationary)); //stationary cuando se lo mantiene tocado
 
-        // Para Mobile
-        if (Input.touchCount > 0 && !ClickInUIStatus.IsPointerOverUI_Mobile())
+        if (touched)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+
+            Vector2 screenPos = Input.touchCount > 0 ? Input.GetTouch(0).position : (Vector2)Input.mousePosition;
+
+            if (TouchObjectStatus.TouchedThisObject(screenPos, gameObject))
             {
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                RaycastCheck(ray);
+                
+                if (!_isPlaying)
+                {
+                    PlaySound("MenuButton");
+                    _isPlaying = true;
+                }
+
+                _isScaling = true;
             }
         }
+        else if (!touched) _isPlaying = false;  
 
         // Escalado suave
         Vector3 targetScaling = _isScaling ? _targetScale : _originalScale;
         transform.localScale = Vector3.Lerp(transform.localScale, targetScaling, Time.deltaTime * _scaleSpeed);
     }
 
-    private void RaycastCheck(Ray ray)
+    public void PlaySound(string name)
     {
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-        if (hit.collider != null && hit.collider.gameObject == gameObject)
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
         {
-            if (!_isScaling && _hoverButton != null && !_hoverButton.isPlaying)
-            {
-                //_hoverButton.Play();
-                _hoverButton.volume = 0.3f;
-            }
-            _isScaling = true;
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
         }
     }
 }

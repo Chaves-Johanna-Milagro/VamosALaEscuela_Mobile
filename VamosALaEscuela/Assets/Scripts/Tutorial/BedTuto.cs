@@ -29,7 +29,7 @@ public class BedTuto : MonoBehaviour
     {
         if (_maked) return;
 
-        if (Input.GetMouseButtonDown(0) && !(ClickInUIStatus.IsPointerOverUI_PC() || ClickInUIStatus.IsPointerOverUI_Mobile())) // click o toque
+        if (Input.GetMouseButtonDown(0) && !(TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile())) // click o toque
         {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);

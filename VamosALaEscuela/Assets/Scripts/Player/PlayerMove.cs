@@ -14,8 +14,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+
         // Si se está tocando UI en PC o móvil, cancelar movimiento y no hacer nada
-        if (ClickInUIStatus.IsPointerOverUI_PC() || ClickInUIStatus.IsPointerOverUI_Mobile())
+        if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile() || 
+            CinematicStatus.IsActiveCinematic() || MiniGameStatus.IsActiveMiniGame())
         {
             _isMoving = false;
             _targetPos = transform.position;
@@ -27,7 +29,7 @@ public class PlayerMove : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved) &&
-            !ClickInUIStatus.IsPointerOverUI_Mobile())
+            !TouchInUIStatus.IsPointerOverUI_Mobile())
             {
                 if (!TouchedInteractiveObject(touch.position))
                 {
@@ -37,7 +39,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         //  Click en PC para testear en el editor
-        if (Input.GetMouseButtonDown(0) && !ClickInUIStatus.IsPointerOverUI_PC())
+        if (Input.GetMouseButtonDown(0) && !TouchInUIStatus.IsPointerOverUI_PC())
         {
             if (!TouchedInteractiveObject(Input.mousePosition))
             {

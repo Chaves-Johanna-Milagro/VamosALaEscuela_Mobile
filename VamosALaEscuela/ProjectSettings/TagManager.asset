@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - InteractiveObj
+  - Cinematic
+  - MiniGame
   layers:
   - Default
   - TransparentFX
@@ -50,6 +52,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2318835537
+    locked: 0
+  - name: Cinematics
+    uniqueID: 3269440739
     locked: 0
   - name: MiniGames
     uniqueID: 1300406945
