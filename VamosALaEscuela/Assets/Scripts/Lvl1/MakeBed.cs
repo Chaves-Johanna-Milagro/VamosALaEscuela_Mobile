@@ -12,6 +12,8 @@ public class MakeBed : MonoBehaviour//version mobile
 
     private bool _isCliked = false;
 
+    private BNotes _notes;
+
     private void Start()
     {
         _incomp = transform.Find("Incomplete").gameObject;
@@ -29,6 +31,8 @@ public class MakeBed : MonoBehaviour//version mobile
             _isCliked=true;
             Debug.Log("restaurando estado");
         }
+
+        _notes = Object.FindFirstObjectByType<BNotes>();
     }
 
     // Update is called once per frame
@@ -68,6 +72,8 @@ public class MakeBed : MonoBehaviour//version mobile
         _comp.SetActive(true);
         yield return new WaitForSeconds(2f);
         _cPJ.SetActive(false);
+
+        _notes.ActiveCheck1();//activamos el check
 
         CinematicStatus.SaveState(gameObject);
         Debug.Log("Estado guardado");

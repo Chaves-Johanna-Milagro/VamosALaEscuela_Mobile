@@ -1,22 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BPause : MonoBehaviour//version mobile
 {
     private GameObject _panel;
-    private GameObject _bResume;
 
     private Button _bPause;
 
     private Button _bContinuar;
+    private Button _bMenu;
+    private Button _bSalir;
 
 
     void Start()
     {
         _panel = transform.Find("Img").gameObject;
-        _bResume = transform.Find("BContinue").gameObject;
 
-        _bContinuar = _bResume.GetComponent<Button>();
+        _bContinuar = transform.Find("BContinue").GetComponent<Button>();
+        _bMenu = transform.Find("BMenu").GetComponent<Button>();
+        _bSalir = transform.Find("BExit").GetComponent<Button>();
 
         _bPause = GetComponent<Button>();
 
@@ -24,6 +27,8 @@ public class BPause : MonoBehaviour//version mobile
 
         _bPause.onClick.AddListener(PauseGame);
         _bContinuar.onClick.AddListener(ResumeGame);
+        _bMenu.onClick.AddListener(ReturnMenu);
+        _bSalir.onClick.AddListener(ExitGame);
     }
     private void Update()
     {
@@ -38,7 +43,17 @@ public class BPause : MonoBehaviour//version mobile
             PauseStatus.SetPaused(true);
         }
     }
+    public void ReturnMenu()
+    {
+        SceneManager.LoadScene("Menu");
 
+        PlayerNameStatus.ResetName(); //resetiar todo
+        LevelGameStatus.ResetLevel();
+        PauseStatus.ResetPause();
+
+
+        Debug.Log("volviendo al menu");
+    }
     private void ResumeGame()
     {
         if (PauseStatus.IsPaused())
@@ -46,7 +61,11 @@ public class BPause : MonoBehaviour//version mobile
             PauseStatus.SetPaused(false);
         }
     }
-
+    public void ExitGame()
+    {
+        Debug.Log("Saliendo del juego...");
+        Application.Quit(); //cierra el ejecutable
+    }
     private void ActivePanel(bool active)
     {
         int count = transform.childCount;

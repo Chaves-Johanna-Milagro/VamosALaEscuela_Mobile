@@ -12,6 +12,8 @@ public class MGBathroom : MonoBehaviour//version mobile
     private GameObject _brush;
 
     private bool _isCompleted = false;
+
+    private BNotes _notes;
     void Start()
     {
         _back = transform.Find("Background").gameObject;
@@ -21,6 +23,8 @@ public class MGBathroom : MonoBehaviour//version mobile
         _mouthC = transform.Find("MouthClean").gameObject;
 
         _brush = transform.Find("CEPILLO").gameObject;
+
+        _notes = Object.FindFirstObjectByType<BNotes>();
     }
 
     // Update is called once per frame
@@ -61,6 +65,8 @@ public class MGBathroom : MonoBehaviour//version mobile
         _mouthC.SetActive(true);
         _mouthD.SetActive(false);
         yield return new WaitForSeconds(3f);
+
+        _notes.ActiveCheck3();//activamos el check
 
         int count = transform.childCount;
         GameObject[] child = new GameObject[count];

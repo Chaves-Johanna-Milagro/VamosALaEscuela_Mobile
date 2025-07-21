@@ -7,7 +7,9 @@ public class PutClothes : MonoBehaviour//version mobile
     private GameObject _cPJ;
 
     private bool _isTouched = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private BNotes _notes;
+
     void Start()
     {
         _cRP = transform.Find("CinematicRP").gameObject;
@@ -19,6 +21,7 @@ public class PutClothes : MonoBehaviour//version mobile
             _isTouched = true;
             Debug.Log("restaurando estado");
         }
+        _notes = Object.FindFirstObjectByType<BNotes>();
     }
 
     // Update is called once per frame
@@ -56,6 +59,8 @@ public class PutClothes : MonoBehaviour//version mobile
         Debug.Log("ropa puesta");
         yield return new WaitForSeconds(2f);
         _cRP.SetActive(false);
+
+        _notes.ActiveCheck2();//activamos el check
 
         CinematicStatus.SaveState(gameObject);
         Debug.Log("Estado guardado");
