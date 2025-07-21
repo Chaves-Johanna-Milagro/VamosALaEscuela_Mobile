@@ -1,7 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
 
 public class MakeBed : MonoBehaviour//version mobile
 {

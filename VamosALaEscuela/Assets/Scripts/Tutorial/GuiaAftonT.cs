@@ -110,7 +110,7 @@ public class GuiaAftonT : MonoBehaviour
         }
 
         // Al terminar la guía, cambiar de escena
-        //SceneManager.LoadScene("Morning2.0");
+        SceneManager.LoadScene("Level1");
     }
 
     public bool IsActiveGuia() { return _isGuiaActive; } //

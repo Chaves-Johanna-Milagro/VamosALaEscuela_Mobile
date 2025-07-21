@@ -5,20 +5,6 @@ using UnityEngine;
 public static class CinematicStatus//version mobile
 {
 
-    /*private static bool cinematic = false;
-
-    public static void ActiveCinematic() //se lo llamara cada que se este ocurriendo una cinematica
-    {
-        cinematic = true;
-    }
-
-    public static void DesactiveCinematic()
-    {
-        cinematic = false;
-    }
-
-    public static bool IsActiveCinematic() {  return cinematic; }
-    */
     public static bool IsActiveCinematic()
     {
         GameObject[] cinematics = GameObject.FindGameObjectsWithTag("Cinematic");
