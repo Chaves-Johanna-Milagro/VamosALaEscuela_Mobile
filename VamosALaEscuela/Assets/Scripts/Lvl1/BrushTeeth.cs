@@ -1,17 +1,62 @@
 using UnityEngine;
+using static UnityEngine.InputManagerEntry;
 
 public class BrushTeeth : MonoBehaviour//version mobile
 {
     //script manejado por Mouth en el mj de cepillarse los dientes
+    private float _timer = 0f;
+    private float _requiredTime = 2f;
 
+    private bool _isTouching = false;
+    private bool _completed = false;
+
+    private MGBathroom _mg;
     void Start()
     {
-        
+        _mg = GetComponentInParent<MGBathroom>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (_completed || !_isTouching) return;
+
+        _timer += Time.deltaTime;
+
+        if (_timer >= _requiredTime)
+        {
+            StartCoroutine(_mg.Complete());
+            _completed = true;
+            Debug.Log("dientes lavados");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_completed) return;
+
+        if (collision.gameObject.name == "CEPILLO")
+        {
+            //_soundBrush?.Play();
+        }
+
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (_completed) return;
+
+        if (other.gameObject.name == "CEPILLO")
+        {
+            _isTouching = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "CEPILLO")
+        {
+            _isTouching = false;
+            _timer = 0f;
+            //_soundBrush.Stop();
+        }
     }
 }

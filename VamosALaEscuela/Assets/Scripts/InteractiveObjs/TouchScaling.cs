@@ -24,6 +24,8 @@ public class TouchScaling : MonoBehaviour //version mobile
 
         if (CinematicStatus.IsActiveCinematic()) return;
 
+        if (MiniGameStatus.IsActiveMiniGame()) return;
+
         _isScaling = false;
 
         // Detectar toque o clic válido

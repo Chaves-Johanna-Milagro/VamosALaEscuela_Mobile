@@ -1,0 +1,72 @@
+using System.Collections;
+using UnityEngine;
+
+public class MGBathroom : MonoBehaviour//version mobile
+{
+    private GameObject _back;
+
+    private GameObject _mouth;
+    private GameObject _mouthD;
+    private GameObject _mouthC;
+
+    private GameObject _brush;
+
+    private bool _isCompleted = false;
+    void Start()
+    {
+        _back = transform.Find("Background").gameObject;
+
+        _mouth = transform.Find("Mouth").gameObject;
+        _mouthD = transform.Find("MouthDirty").gameObject;
+        _mouthC = transform.Find("MouthClean").gameObject;
+
+        _brush = transform.Find("CEPILLO").gameObject;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (_isCompleted) return;
+
+        if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
+
+        if (CinematicStatus.IsActiveCinematic()) return;
+
+        if (MiniGameStatus.IsActiveMiniGame()) return;
+
+        bool touched = Input.GetMouseButtonDown(0) ||
+               (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began);
+
+        if (touched)
+        {
+            Vector2 screenPoint = Input.touchCount > 0 ? Input.GetTouch(0).position : (Vector2)Input.mousePosition;
+
+            if (TouchObjectStatus.TouchedThisObject(screenPoint, gameObject))
+            {
+                _back.SetActive(true);
+                _mouth.SetActive(true);
+                _mouthD.SetActive(true);
+                _brush.SetActive(true);
+                
+            }
+        }
+    }
+
+    public IEnumerator Complete()
+    {
+        _isCompleted = true;
+
+        _mouthC.SetActive(true);
+        _mouthD.SetActive(false);
+        yield return new WaitForSeconds(3f);
+
+        int count = transform.childCount;
+        GameObject[] child = new GameObject[count];
+
+        for (int i = 0; i < count; i++)
+        {
+            child[i] = transform.GetChild(i).gameObject;
+            child[i].SetActive(false);
+        }
+    }
+}

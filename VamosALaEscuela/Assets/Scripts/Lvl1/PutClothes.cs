@@ -30,6 +30,8 @@ public class PutClothes : MonoBehaviour//version mobile
 
         if (CinematicStatus.IsActiveCinematic()) return;
 
+        if (MiniGameStatus.IsActiveMiniGame()) return;
+
         bool touched = Input.GetMouseButtonDown(0) ||
                        (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began);
 
@@ -48,9 +50,6 @@ public class PutClothes : MonoBehaviour//version mobile
     {
         _isTouched = true;
 
-        CinematicStatus.ActiveCinematic(); //seteamos que la cinematica esta activa 
-
-        //yield return new WaitForSeconds(2f);
         _cRP.SetActive(true);
         Debug.Log("ropa puesta");
         yield return new WaitForSeconds(2f);
@@ -59,6 +58,5 @@ public class PutClothes : MonoBehaviour//version mobile
         CinematicStatus.SaveState(gameObject);
         Debug.Log("Estado guardado");
 
-        CinematicStatus.DesactiveCinematic(); //seteamos que ya se desactivo la cinematica
     }
 }

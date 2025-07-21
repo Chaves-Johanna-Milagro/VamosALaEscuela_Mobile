@@ -5,7 +5,7 @@ using UnityEngine;
 public static class CinematicStatus//version mobile
 {
 
-    private static bool cinematic = false;
+    /*private static bool cinematic = false;
 
     public static void ActiveCinematic() //se lo llamara cada que se este ocurriendo una cinematica
     {
@@ -18,7 +18,21 @@ public static class CinematicStatus//version mobile
     }
 
     public static bool IsActiveCinematic() {  return cinematic; }
+    */
+    public static bool IsActiveCinematic()
+    {
+        GameObject[] cinematics = GameObject.FindGameObjectsWithTag("Cinematic");
 
+        foreach (GameObject cinematic in cinematics)
+        {
+            if (cinematic.activeInHierarchy)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     // Clase interna que guarda el estado completo del padre y de cada hijo
     private class ObjectState

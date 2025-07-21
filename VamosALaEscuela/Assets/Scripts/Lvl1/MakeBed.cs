@@ -41,6 +41,8 @@ public class MakeBed : MonoBehaviour//version mobile
 
         if (CinematicStatus.IsActiveCinematic()) return;
 
+        if (MiniGameStatus.IsActiveMiniGame()) return;
+
         bool touched = Input.GetMouseButtonDown(0) ||
                        (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began);
 
@@ -59,9 +61,6 @@ public class MakeBed : MonoBehaviour//version mobile
     {                
         _isCliked = true;
 
-        CinematicStatus.ActiveCinematic(); //seteamos que la cinematica esta activa 
-
-        //yield return new WaitForSeconds(2f);
         _cPJ.SetActive(true);
         Debug.Log("cama hecha");
         _incomp.SetActive(false);
@@ -72,6 +71,5 @@ public class MakeBed : MonoBehaviour//version mobile
         CinematicStatus.SaveState(gameObject);
         Debug.Log("Estado guardado");
 
-        CinematicStatus.DesactiveCinematic(); //seteamos que ya se desactivo la cinematica
     }
 }
