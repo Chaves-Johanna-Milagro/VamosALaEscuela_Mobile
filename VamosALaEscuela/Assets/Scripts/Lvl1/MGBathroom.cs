@@ -25,6 +25,13 @@ public class MGBathroom : MonoBehaviour//version mobile
         _brush = transform.Find("CEPILLO").gameObject;
 
         _notes = Object.FindFirstObjectByType<BNotes>();
+
+        if (MiniGameStatus.HasState(gameObject))
+        {
+            MiniGameStatus.LoadState(gameObject);
+            _isCompleted = true;
+            Debug.Log("restaurando estado");
+        }
     }
 
 
@@ -76,5 +83,7 @@ public class MGBathroom : MonoBehaviour//version mobile
             child[i] = transform.GetChild(i).gameObject;
             child[i].SetActive(false);
         }
+
+        MiniGameStatus.SaveState(gameObject);
     }
 }

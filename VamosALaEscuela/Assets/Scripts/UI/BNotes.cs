@@ -32,6 +32,14 @@ public class BNotes : MonoBehaviour//version mobile
         Active(false);
 
         _bNotes.onClick.AddListener(Toggle);
+
+        if (CheckStatus.HasState(_checks))
+        {
+            CheckStatus.LoadState(_checks);
+            //_isTouched = true;
+            Debug.Log("restaurando estado");
+            Active(false);
+        }
     }
 
     // Update is called once per frame
@@ -62,40 +70,31 @@ public class BNotes : MonoBehaviour//version mobile
             _oLevel = transform.Find("Lvl1").gameObject;
             _oLevel.SetActive(activated);
         }
-        if(_isCheck1) ActiveCheck1();
-        if(_isCheck2) ActiveCheck2();
-        if(_isCheck3) ActiveCheck3();
     }
+
 
     public void ActiveCheck1()
     {
         GameObject check = _checks.transform.Find("Obj1").gameObject;
-
-        check.SetActive(_isActive);
-
-        Debug.Log("check 1 activado");
-         
-        _isCheck1 = true;
+        check.SetActive(true);
+        CheckStatus.SaveState(_checks);
+        Debug.Log("Check 1 activado");
     }
+
     public void ActiveCheck2()
     {
         GameObject check = _checks.transform.Find("Obj2").gameObject;
-
-        check.SetActive(_isActive);
-
-        Debug.Log("check 2 activado");
-
-        _isCheck2 = true;
+        check.SetActive(true);
+        CheckStatus.SaveState(_checks);
+        Debug.Log("Check 2 activado");
     }
+
     public void ActiveCheck3()
     {
         GameObject check = _checks.transform.Find("Obj3").gameObject;
-
-        check.SetActive(_isActive);
-
-        Debug.Log("check 3 activado");
-
-        _isCheck3 = true;
+        check.SetActive(true);
+        CheckStatus.SaveState(_checks);
+        Debug.Log("Check 3 activado");
     }
 
 }

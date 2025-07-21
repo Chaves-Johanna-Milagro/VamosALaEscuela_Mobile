@@ -9,9 +9,9 @@ public static class CinematicStatus//version mobile
     {
         GameObject[] cinematics = GameObject.FindGameObjectsWithTag("Cinematic");
 
-        foreach (GameObject cinematic in cinematics)
+        foreach (GameObject cin in cinematics)
         {
-            if (cinematic.activeInHierarchy)
+            if (cin.activeInHierarchy)
             {
                 return true;
             }
@@ -93,4 +93,8 @@ public static class CinematicStatus//version mobile
         return obj.scene.name + "_" + obj.name;
     }
 
+    public static void ClearAllStates()
+    {
+        _savedStates.Clear();
+    }
 }

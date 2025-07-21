@@ -50,6 +50,8 @@ public class BPause : MonoBehaviour//version mobile
         PlayerNameStatus.ResetName(); //resetiar todo
         LevelGameStatus.ResetLevel();
         PauseStatus.ResetPause();
+        CheckStatus.ClearAllStates();   
+        CinematicStatus.ClearAllStates();   
 
 
         Debug.Log("volviendo al menu");

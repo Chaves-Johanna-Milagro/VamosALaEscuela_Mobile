@@ -10,7 +10,7 @@ public class MakeBed : MonoBehaviour//version mobile
     private GameObject _cPJ;  // cinematica con pijama
     private GameObject _cRP;  // cinematica cambiado
 
-    private bool _isCliked = false;
+    private bool _isTouched = false;
 
     private BNotes _notes;
 
@@ -28,7 +28,7 @@ public class MakeBed : MonoBehaviour//version mobile
         if (CinematicStatus.HasState(gameObject))
         {
             CinematicStatus.LoadState(gameObject);
-            _isCliked=true;
+            _isTouched = true;
             Debug.Log("restaurando estado");
         }
 
@@ -40,7 +40,7 @@ public class MakeBed : MonoBehaviour//version mobile
     {
         if (PauseStatus.IsPaused()) return;
 
-        if (_isCliked) return;
+        if (_isTouched) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
 
@@ -64,7 +64,7 @@ public class MakeBed : MonoBehaviour//version mobile
 
     private IEnumerator DelayCinematic()
     {                
-        _isCliked = true;
+        _isTouched = true;
 
         _cPJ.SetActive(true);
         Debug.Log("cama hecha");

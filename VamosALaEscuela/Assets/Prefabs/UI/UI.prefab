@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 4901477422531618342}
   - component: {fileID: 2879667900480074805}
   - component: {fileID: 3424291662301052383}
+  - component: {fileID: 7733290501106393253}
   m_Layer: 5
   m_Name: BMiniAfton
   m_TagString: Untagged
@@ -311,6 +312,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7733290501106393253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318116662950840559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3fcb0cb98d00034da2d0cb6c177e1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &350154434074973965
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +621,7 @@ GameObject:
   - component: {fileID: 1945749647291144462}
   - component: {fileID: 7592608783899986686}
   - component: {fileID: 3767058898329013940}
+  - component: {fileID: 2431197740346006693}
   m_Layer: 5
   m_Name: BKindness
   m_TagString: Untagged
@@ -829,6 +843,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2431197740346006693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731065399701602461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263eb4fa23eb3d54ab93cc259a1e9baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &948892643357515828
 GameObject:
   m_ObjectHideFlags: 0
