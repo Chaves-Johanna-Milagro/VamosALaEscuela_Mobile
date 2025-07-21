@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         // Si se está tocando UI en PC o móvil, cancelar movimiento y no hacer nada
-        if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile() || CinematicStatus.TouchedInCinematic())
+        if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile() || CinematicStatus.IsActiveCinematic())
         {
             _isMoving = false;
             _targetPos = transform.position;

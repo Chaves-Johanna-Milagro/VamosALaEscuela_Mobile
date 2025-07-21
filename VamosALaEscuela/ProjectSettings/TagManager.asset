@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractiveObj
   - Cinematic
+  - MiniGame
   layers:
   - Default
   - TransparentFX

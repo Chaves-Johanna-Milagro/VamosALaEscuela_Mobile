@@ -1,41 +1,30 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
+using System.Collections;
 
-public class MakeBed : MonoBehaviour//version mobile
+public class PutClothes : MonoBehaviour//version mobile
 {
-    private GameObject _incomp; //cama si hacer
-    private GameObject _comp;  // cama hecha
+    private GameObject _cRP;
+    private GameObject _cPJ;
 
-    private GameObject _cPJ;  // cinematica con pijama
-    private GameObject _cRP;  // cinematica cambiado
-
-    private bool _isCliked = false;
-
-    private void Start()
+    private bool _isTouched = false;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        _incomp = transform.Find("Incomplete").gameObject;
-        _comp = transform.Find("Complete").gameObject;
-
-        _cPJ = transform.Find("CinematicPJ").gameObject;
         _cRP = transform.Find("CinematicRP").gameObject;
-
-        /*_incomp.SetActive(true);//activamos la incompleta
-        _comp.SetActive(false);*/
+        _cPJ = transform.Find("CinematicPJ").gameObject;
 
         if (CinematicStatus.HasState(gameObject))
         {
             CinematicStatus.LoadState(gameObject);
-            _isCliked=true;
+            _isTouched = true;
             Debug.Log("restaurando estado");
         }
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
-        if (_isCliked) return;
+        if (_isTouched) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
 
@@ -56,18 +45,16 @@ public class MakeBed : MonoBehaviour//version mobile
     }
 
     private IEnumerator DelayCinematic()
-    {                
-        _isCliked = true;
+    {
+        _isTouched = true;
 
         CinematicStatus.ActiveCinematic(); //seteamos que la cinematica esta activa 
 
         //yield return new WaitForSeconds(2f);
-        _cPJ.SetActive(true);
-        Debug.Log("cama hecha");
-        _incomp.SetActive(false);
-        _comp.SetActive(true);
+        _cRP.SetActive(true);
+        Debug.Log("ropa puesta");
         yield return new WaitForSeconds(2f);
-        _cPJ.SetActive(false);
+        _cRP.SetActive(false);
 
         CinematicStatus.SaveState(gameObject);
         Debug.Log("Estado guardado");

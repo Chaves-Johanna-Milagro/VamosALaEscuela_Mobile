@@ -1,38 +1,24 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CinematicStatus
+public static class CinematicStatus//version mobile
 {
-    //Verifica si se toco en una cinematica
-    public static bool TouchedInCinematic()
+
+    private static bool cinematic = false;
+
+    public static void ActiveCinematic() //se lo llamara cada que se este ocurriendo una cinematica
     {
-        Vector3 screenPos = Vector3.zero;
-        bool inputDetected = false;
-
-        // Detecta click de mouse
-        if (Input.GetMouseButtonDown(0))
-        {
-            screenPos = Input.mousePosition;
-            inputDetected = true;
-        }
-        // Detecta toque en pantalla
-        else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            screenPos = Input.GetTouch(0).position;
-            inputDetected = true;
-        }
-
-        if (inputDetected)
-        {
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPos);
-            Vector2 rayOrigin = new Vector2(worldPoint.x, worldPoint.y);
-
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero);
-            return hit.collider != null && hit.collider.CompareTag("Cinematic");
-        }
-
-        return false;
+        cinematic = true;
     }
+
+    public static void DesactiveCinematic()
+    {
+        cinematic = false;
+    }
+
+    public static bool IsActiveCinematic() {  return cinematic; }
+
 
     // Clase interna que guarda el estado completo del padre y de cada hijo
     private class ObjectState
