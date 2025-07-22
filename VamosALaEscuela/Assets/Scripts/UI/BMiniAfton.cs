@@ -29,6 +29,16 @@ public class BMiniAfton : MonoBehaviour//version mobile
         "HASTA LOS DIENTES QUIEREN LLEGAR PROLIJOS A CLASE"
     };
 
+    private string[] _randomTextNvl2 = new string[]
+    {
+        "NO OLVIDES NADA",
+        "DESAYUNAR ES COMO CARGAR COMBUSTIBLE PARA TU CEREBRO",
+        "UNA MOCHILA ORDENADA ES UN SUPERPODER ESCOLAR",
+        "YA PUSISTE TU CUADERNO NO LO OLVIDES",
+        "TODO SABE MEJOR CUANDO ESTAS PREPARADO",
+        "NO TE VAYAS SIN DESPEDIRTE",
+        "SI TE VAS SIN DESPEDIRTE ALGUIEN TE VA A EXTRAÑAR"
+    };
 
     private string[] _randomGoodFeedback = new string[]
 {
@@ -103,6 +113,7 @@ public class BMiniAfton : MonoBehaviour//version mobile
     private void ShowByScene()
     {
         if (_scene == "Level1") ConcejosNvl1();
+        if (_scene == "Level2") ConcejosNvl2();
     }
 
     private void Active(bool active)
@@ -126,6 +137,16 @@ public class BMiniAfton : MonoBehaviour//version mobile
             string randomLine = _randomTextNvl1[Random.Range(0, _randomTextNvl1.Length)];
             _textComp.text = "¡" + randomLine + "!";
             AftonDialogStatus.PlaySound(randomLine);//pa que suene el audio que corresponda
+        }
+    }
+
+    private void ConcejosNvl2()
+    {
+        if (_randomTextNvl2.Length > 0)  // Selecciona un concejo aleatorio
+        {
+            string randomLine = _randomTextNvl2[Random.Range(0, _randomTextNvl2.Length)];
+            _textComp.text = "¡" + randomLine + "!";
+            AftonDialogStatus.PlaySound(randomLine);
         }
     }
 
