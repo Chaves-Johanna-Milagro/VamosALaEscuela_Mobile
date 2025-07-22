@@ -12,5 +12,8 @@ public static class PlayerNameStatus
     {
         return _playerName;
     }
-
+    public static void ResetName()
+    {
+        _playerName = "";
+    }
 }

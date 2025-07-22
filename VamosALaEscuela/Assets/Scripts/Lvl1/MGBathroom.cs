@@ -12,6 +12,8 @@ public class MGBathroom : MonoBehaviour//version mobile
     private GameObject _brush;
 
     private bool _isCompleted = false;
+
+    private BNotes _notes;
     void Start()
     {
         _back = transform.Find("Background").gameObject;
@@ -21,9 +23,18 @@ public class MGBathroom : MonoBehaviour//version mobile
         _mouthC = transform.Find("MouthClean").gameObject;
 
         _brush = transform.Find("CEPILLO").gameObject;
+
+        _notes = Object.FindFirstObjectByType<BNotes>();
+
+        if (MiniGameStatus.HasState(gameObject))
+        {
+            MiniGameStatus.LoadState(gameObject);
+            _isCompleted = true;
+            Debug.Log("restaurando estado");
+        }
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (PauseStatus.IsPaused()) return;
@@ -60,7 +71,9 @@ public class MGBathroom : MonoBehaviour//version mobile
 
         _mouthC.SetActive(true);
         _mouthD.SetActive(false);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
+
+        _notes.ActiveCheck3();//activamos el check
 
         int count = transform.childCount;
         GameObject[] child = new GameObject[count];
@@ -70,5 +83,7 @@ public class MGBathroom : MonoBehaviour//version mobile
             child[i] = transform.GetChild(i).gameObject;
             child[i].SetActive(false);
         }
+
+        MiniGameStatus.SaveState(gameObject);
     }
 }
