@@ -17,9 +17,9 @@ public class BNotes : MonoBehaviour//version mobile
 
     private bool _isActive = false;
 
-    private bool _isCheck1 = false;
+  /*  private bool _isCheck1 = false;
     private bool _isCheck2 = false;
-    private bool _isCheck3 = false;
+    private bool _isCheck3 = false;*/
     void Start()
     {
         _panel = transform.Find("Img").gameObject;
