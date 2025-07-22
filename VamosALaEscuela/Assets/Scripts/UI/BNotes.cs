@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.PackageManager;
-using Unity.VisualScripting;
 
 public class BNotes : MonoBehaviour//version mobile
 {
