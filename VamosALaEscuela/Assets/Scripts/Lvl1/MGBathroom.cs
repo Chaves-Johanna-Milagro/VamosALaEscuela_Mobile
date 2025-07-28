@@ -16,6 +16,7 @@ public class MGBathroom : MonoBehaviour//version mobile
     private BNotes _notes;
     private BKindness _kind;
 
+    private GAfton _gAfton;
     void Start()
     {
         _back = transform.Find("Background").gameObject;
@@ -28,6 +29,8 @@ public class MGBathroom : MonoBehaviour//version mobile
 
         _notes = Object.FindFirstObjectByType<BNotes>();
         _kind = Object.FindFirstObjectByType<BKindness>();
+
+        _gAfton = Object.FindFirstObjectByType<GAfton>();
 
         if (MiniGameStatus.HasState(gameObject))
         {
@@ -62,7 +65,9 @@ public class MGBathroom : MonoBehaviour//version mobile
                 _mouth.SetActive(true);
                 _mouthD.SetActive(true);
                 _brush.SetActive(true);
-                
+
+
+                _gAfton.GBrushTeeth();//active las indicaciones del mg
             }
         }
     }
