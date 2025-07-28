@@ -16,6 +16,7 @@ public class MGBathroom : MonoBehaviour//version mobile
     private BNotes _notes;
     private BKindness _kind;
 
+    private GAfton _gAfton;
     void Start()
     {
         _back = transform.Find("Background").gameObject;
@@ -28,6 +29,8 @@ public class MGBathroom : MonoBehaviour//version mobile
 
         _notes = Object.FindFirstObjectByType<BNotes>();
         _kind = Object.FindFirstObjectByType<BKindness>();
+
+        _gAfton = Object.FindFirstObjectByType<GAfton>();
 
         if (MiniGameStatus.HasState(gameObject))
         {
@@ -62,7 +65,9 @@ public class MGBathroom : MonoBehaviour//version mobile
                 _mouth.SetActive(true);
                 _mouthD.SetActive(true);
                 _brush.SetActive(true);
-                
+                PlaySound("RunningWater");
+
+                _gAfton.GBrushTeeth();//active las indicaciones del mg
             }
         }
     }
@@ -87,5 +92,24 @@ public class MGBathroom : MonoBehaviour//version mobile
         }
 
         MiniGameStatus.SaveState(gameObject);
+    }
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
+    }
+
+    public void StopSound()
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound != null) sound.Stop();
+        }
     }
 }

@@ -52,11 +52,12 @@ public class PutClothes : MonoBehaviour//version mobile
 
     private IEnumerator DelayCinematic()
     {
-
+        PlaySound("ropa");
         _cRP.SetActive(true);
         Debug.Log("ropa puesta");
         yield return new WaitForSeconds(2f);
         _cRP.SetActive(false);
+        StopSound();
 
         _notes.ActiveCheck2();//activamos el check
         _kind.GoodDecision();//subimos la barrita
@@ -64,5 +65,24 @@ public class PutClothes : MonoBehaviour//version mobile
         CinematicStatus.SaveState(gameObject);
         Debug.Log("Estado guardado");
 
+    }
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
+    }
+
+    public void StopSound()
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound != null) sound.Stop();
+        }
     }
 }

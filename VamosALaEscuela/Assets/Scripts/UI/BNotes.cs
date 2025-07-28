@@ -64,6 +64,11 @@ public class BNotes : MonoBehaviour//version mobile
             _oLevel = transform.Find("Lvl1").gameObject;
             _oLevel.SetActive(activated);
         }
+        if (_scene == "Level2VM")
+        {
+            _oLevel = transform.Find("Lvl2").gameObject;
+            _oLevel.SetActive(activated);
+        }
         // Actualizar visibilidad de los checks según su estado
         UpdateVisualChecks();
     }

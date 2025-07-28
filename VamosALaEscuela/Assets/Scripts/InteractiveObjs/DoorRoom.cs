@@ -31,9 +31,29 @@ public class DoorRoom : MonoBehaviour
 
             if (TouchObjectStatus.TouchedThisObject(screenPoint, gameObject))
             {
+                PlaySound("puerta");
                 if(_room == "Level1VM") SceneManager.LoadScene("Level2VM");
                 if(_room == "Level2VM") SceneManager.LoadScene("Level1VM");
             }
+        }
+    }
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
+    }
+
+    public void StopSound()
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound != null) sound.Stop();
         }
     }
 }

@@ -10,9 +10,12 @@ public class BrushTeeth : MonoBehaviour//version mobile
     private bool _completed = false;
 
     private MGBathroom _mg;
+
+    private AudioSource _sound;
     void Start()
     {
         _mg = GetComponentInParent<MGBathroom>();
+        _sound = GetComponentInParent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,7 +40,7 @@ public class BrushTeeth : MonoBehaviour//version mobile
 
         if (collision.gameObject.name == "CEPILLO")
         {
-            //_soundBrush?.Play();
+            _sound?.Play();
         }
 
     }
@@ -57,7 +60,7 @@ public class BrushTeeth : MonoBehaviour//version mobile
         {
             _isTouching = false;
             _timer = 0f;
-            //_soundBrush.Stop();
+            _sound.Stop();
         }
     }
 }
