@@ -31,8 +31,8 @@ public class DoorRoom : MonoBehaviour
 
             if (TouchObjectStatus.TouchedThisObject(screenPoint, gameObject))
             {
-                if(_room == "Level1") SceneManager.LoadScene("Level2");
-                if(_room == "Level2") SceneManager.LoadScene("Level1");
+                if(_room == "Level1VM") SceneManager.LoadScene("Level2VM");
+                if(_room == "Level2VM") SceneManager.LoadScene("Level1VM");
             }
         }
     }

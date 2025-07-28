@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MGBathroom : MonoBehaviour//version mobile
 {
+    //minijuego del nivel 1
+
     private GameObject _back;
 
     private GameObject _mouth;
@@ -11,9 +13,9 @@ public class MGBathroom : MonoBehaviour//version mobile
 
     private GameObject _brush;
 
-    private bool _isCompleted = false;
-
     private BNotes _notes;
+    private BKindness _kind;
+
     void Start()
     {
         _back = transform.Find("Background").gameObject;
@@ -25,11 +27,11 @@ public class MGBathroom : MonoBehaviour//version mobile
         _brush = transform.Find("CEPILLO").gameObject;
 
         _notes = Object.FindFirstObjectByType<BNotes>();
+        _kind = Object.FindFirstObjectByType<BKindness>();
 
         if (MiniGameStatus.HasState(gameObject))
         {
             MiniGameStatus.LoadState(gameObject);
-            _isCompleted = true;
             Debug.Log("restaurando estado");
         }
     }
@@ -67,14 +69,13 @@ public class MGBathroom : MonoBehaviour//version mobile
 
     public IEnumerator Complete()
     {
-        //_isCompleted = true;
+
         _notes.ActiveCheck3();//activamos el check
+        _kind.GoodDecision();//subimos la barrita
 
         _mouthC.SetActive(true);
         _mouthD.SetActive(false);
         yield return new WaitForSeconds(2f);
-
-
 
         int count = transform.childCount;
         GameObject[] child = new GameObject[count];

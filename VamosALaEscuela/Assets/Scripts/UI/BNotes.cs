@@ -49,6 +49,8 @@ public class BNotes : MonoBehaviour//version mobile
         _isActive = !_isActive;
 
         Active(_isActive);
+        if (_isActive) PlaySound("ButtonNotes");
+        if (!_isActive) StopSound();
     }
 
     private void Active(bool activated)
@@ -57,7 +59,7 @@ public class BNotes : MonoBehaviour//version mobile
         _text.SetActive(activated);
         _checks.SetActive(activated);
 
-        if (_scene == "Level1")
+        if (_scene == "Level1VM")
         {
             _oLevel = transform.Find("Lvl1").gameObject;
             _oLevel.SetActive(activated);
@@ -84,6 +86,8 @@ public class BNotes : MonoBehaviour//version mobile
         CheckStatus.SetCheckActive(_scene, 0);
         UpdateVisualChecks();
         Debug.Log("Check 1 activado");
+
+        PlaySound("Correct");
     }
 
     public void ActiveCheck2()
@@ -91,6 +95,8 @@ public class BNotes : MonoBehaviour//version mobile
         CheckStatus.SetCheckActive(_scene, 1);
         UpdateVisualChecks();
         Debug.Log("Check 2 activado");
+
+        PlaySound("Correct");
     }
 
     public void ActiveCheck3()
@@ -98,6 +104,8 @@ public class BNotes : MonoBehaviour//version mobile
         CheckStatus.SetCheckActive(_scene, 2);
         UpdateVisualChecks();
         Debug.Log("Check 3 activado");
+
+        PlaySound("Correct");
     }
 
     public bool IsActiveCheck1()
@@ -113,5 +121,25 @@ public class BNotes : MonoBehaviour//version mobile
     public bool IsActiveCheck3()
     {
         return CheckStatus.IsCheckActive(_scene, 2);
+    }
+
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
+    }
+
+    public void StopSound()
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound != null) sound.Stop();
+        }
     }
 }

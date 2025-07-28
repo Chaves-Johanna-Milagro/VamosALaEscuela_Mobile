@@ -60,7 +60,7 @@ public static class CheckStatus//version mobile
     }
 
 
-    public static void ClearAllStates()
+    public static void ResetChecks()
     {
         _sceneChecks.Clear();
     }

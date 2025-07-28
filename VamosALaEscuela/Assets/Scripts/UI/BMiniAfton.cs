@@ -107,7 +107,9 @@ public class BMiniAfton : MonoBehaviour//version mobile
         if (_isActive)
         {
             ShowByScene(); // Solo muestra consejo si se activó
+            //PlaySound("Afton");
         }
+        //if(!_isActive) StopSound(); 
     }
 
     private void ShowByScene()
@@ -186,5 +188,25 @@ public class BMiniAfton : MonoBehaviour//version mobile
 
         _isActive = false;
         Active(_isActive);
+    }
+
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
+    }
+
+    public void StopSound()
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound != null) sound.Stop();
+        }
     }
 }
