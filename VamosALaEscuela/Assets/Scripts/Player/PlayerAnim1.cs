@@ -13,6 +13,7 @@ public class PlayerAnim1 : MonoBehaviour//version mobile
         _pMove = GetComponent<PlayerMove>();
 
         _anim = GetComponent<Animator>();
+
     }
 
     private void Update()
@@ -46,12 +47,13 @@ public class PlayerAnim1 : MonoBehaviour//version mobile
         else if (newPos.x < transform.position.x)
         {
             if(useRP) _anim.SetBool("L_Walk_RP", true);
-            else _anim.SetBool("L_Walk_PJ", true);
+             else _anim.SetBool("L_Walk_PJ", true);
         }
     }
     private void IdleAnim()
     {
         ResetAnim();
+
         bool useRP = CheckStatus.IsCheckActive("Level1VM",1);
 
         if (!_pMove.IsMoving())
@@ -59,6 +61,7 @@ public class PlayerAnim1 : MonoBehaviour//version mobile
             if(useRP)_anim.SetBool("Idle_RP", true);
             else _anim.SetBool("Idle_PJ", true);
         }
+
     }
 
     private void ResetAnim()

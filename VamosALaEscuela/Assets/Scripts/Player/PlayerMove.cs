@@ -7,9 +7,12 @@ public class PlayerMove : MonoBehaviour
     private Vector3 _targetPos;
     private bool _isMoving = false;
 
+    private AudioSource _sound;
     private void Start()
     {
         _targetPos = transform.position;
+
+        _sound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -21,6 +24,7 @@ public class PlayerMove : MonoBehaviour
         {
             _isMoving = false;
             _targetPos = transform.position;
+            if (_sound.isPlaying) _sound?.Stop();//detener el sonido
             return;
         }
 
@@ -50,10 +54,16 @@ public class PlayerMove : MonoBehaviour
         // Movimiento suave hacia el target
         if (_isMoving)
         {
+            if (!_sound.isPlaying) _sound?.Play();
+
             transform.position = Vector3.MoveTowards(transform.position, _targetPos, speed * Time.deltaTime);
 
             // Parar si llego
-            if (Vector3.Distance(transform.position, _targetPos) < 0.05f) _isMoving = false;
+            if (Vector3.Distance(transform.position, _targetPos) < 0.05f)
+            {
+                _isMoving = false;
+                _sound?.Stop();
+            }
          
         }
     }

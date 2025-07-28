@@ -63,6 +63,7 @@ public class MakeBed : MonoBehaviour//version mobile
 
     private IEnumerator DelayCinematic()
     {
+        PlaySound("tender_cama");
         bool useRP = CheckStatus.IsCheckActive("Level1VM", 1);
 
         if(useRP)_cRP.SetActive(true);
@@ -75,11 +76,33 @@ public class MakeBed : MonoBehaviour//version mobile
         if (useRP) _cRP.SetActive(false);
         else _cPJ.SetActive(false);
 
+        StopSound();
+
         _notes.ActiveCheck1();//activamos el check
         _kind.GoodDecision();//subimos la barrita
 
         CinematicStatus.SaveState(gameObject);
         Debug.Log("Estado guardado");
 
+    }
+
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
+    }
+
+    public void StopSound()
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound != null) sound.Stop();
+        }
     }
 }
