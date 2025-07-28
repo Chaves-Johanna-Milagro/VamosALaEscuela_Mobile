@@ -39,7 +39,7 @@ public class MGBathroom : MonoBehaviour//version mobile
     {
         if (PauseStatus.IsPaused()) return;
 
-        if (_isCompleted) return;
+        if (_notes.IsActiveCheck3()) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
 
@@ -67,13 +67,14 @@ public class MGBathroom : MonoBehaviour//version mobile
 
     public IEnumerator Complete()
     {
-        _isCompleted = true;
+        //_isCompleted = true;
+        _notes.ActiveCheck3();//activamos el check
 
         _mouthC.SetActive(true);
         _mouthD.SetActive(false);
         yield return new WaitForSeconds(2f);
 
-        _notes.ActiveCheck3();//activamos el check
+
 
         int count = transform.childCount;
         GameObject[] child = new GameObject[count];

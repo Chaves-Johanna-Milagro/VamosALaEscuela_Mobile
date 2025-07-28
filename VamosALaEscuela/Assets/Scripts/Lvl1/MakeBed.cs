@@ -40,7 +40,7 @@ public class MakeBed : MonoBehaviour//version mobile
     {
         if (PauseStatus.IsPaused()) return;
 
-        if (_isTouched) return;
+        if (_notes.IsActiveCheck1()) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
 

@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class PlayerAnim1 : MonoBehaviour
+public class PlayerAnim1 : MonoBehaviour//version mobile
 {
+    //script para la animacion del personaje en el nivel 1 y 2
+
     private PlayerMove _pMove;
 
     private Animator _anim;
@@ -34,20 +36,29 @@ public class PlayerAnim1 : MonoBehaviour
     {
         ResetAnim();
 
+        bool useRP = CheckStatus.IsCheckActive("Level1", 1);
+
         if (newPos.x > transform.position.x)
         {
-            _anim.SetBool("R_Walk_PJ", true);
+           if(useRP) _anim.SetBool("R_Walk_RP", true);
+            else _anim.SetBool("R_Walk_PJ", true);
         }
         else if (newPos.x < transform.position.x)
         {
-            _anim.SetBool("L_Walk_PJ", true);
+            if(useRP) _anim.SetBool("L_Walk_RP", true);
+            else _anim.SetBool("L_Walk_PJ", true);
         }
     }
     private void IdleAnim()
     {
         ResetAnim();
+        bool useRP = CheckStatus.IsCheckActive("Level1",1);
 
-        if (!_pMove.IsMoving()) _anim.SetBool("Idle_PJ", true);
+        if (!_pMove.IsMoving())
+        {
+            if(useRP)_anim.SetBool("Idle_RP", true);
+            else _anim.SetBool("Idle_PJ", true);
+        }
     }
 
     private void ResetAnim()
@@ -55,5 +66,9 @@ public class PlayerAnim1 : MonoBehaviour
         _anim.SetBool("Idle_PJ", false);
         _anim.SetBool("R_Walk_PJ", false);
         _anim.SetBool("L_Walk_PJ", false);
+
+        _anim.SetBool("Idle_RP", false);
+        _anim.SetBool("R_Walk_RP", false);
+        _anim.SetBool("L_Walk_RP", false);
     }
 }
