@@ -1,78 +1,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CheckStatus
+public static class CheckStatus//version mobile
 {
-    // Estructura para almacenar solo los estados activos de los hijos
-    private class ObjectState
+    // Guarda el estado de los checks para cada escena
+    // Clave = nombre de la escena, Valor = array de 3 bools para los 3 checks
+    private static Dictionary<string, bool[]> _sceneChecks = new Dictionary<string, bool[]>();
+
+    // Obtiene el array de estados para una escena
+    public static bool[] GetChecksForScene(string sceneName)
     {
-        public bool isActive;                    // Estado activo del objeto padre
-        public List<bool> childActiveStates;     // Estados activos de los hijos
-    }
-
-    // Diccionario donde se guarda el estado con clave única por escena + nombre
-    private static Dictionary<string, ObjectState> _savedStates = new();
-
-    /// <summary>
-    /// Guarda el estado del padre (activo) y el estado activo de sus hijos
-    /// </summary>
-    public static void SaveState(GameObject obj)
-    {
-        string id = GetUniqueId(obj);
-
-        ObjectState state = new ObjectState
+        if (!_sceneChecks.ContainsKey(sceneName))
         {
-            isActive = obj.activeSelf,
-            childActiveStates = new List<bool>()
-        };
-
-        for (int i = 0; i < obj.transform.childCount; i++)
-        {
-            Transform child = obj.transform.GetChild(i);
-            state.childActiveStates.Add(child.gameObject.activeSelf);
+            // Si no existe aún, la inicializa con todos los checks en false
+            _sceneChecks[sceneName] = new bool[3];
         }
 
-        _savedStates[id] = state;
+        return _sceneChecks[sceneName];
     }
 
-    /// <summary>
-    /// Restaura el estado activo del padre y de sus hijos
-    /// </summary>
-    public static void LoadState(GameObject obj)
+    // Activa un check en una escena específica
+    public static void SetCheckActive(string sceneName, int index)
     {
-        string id = GetUniqueId(obj);
-        if (!_savedStates.ContainsKey(id)) return;
+        if (index < 0 || index > 2) return;
 
-        ObjectState state = _savedStates[id];
+        GetChecksForScene(sceneName)[index] = true;
+    }
 
-        obj.SetActive(state.isActive);
 
-        for (int i = 0; i < obj.transform.childCount &&
-                        i < state.childActiveStates.Count; i++)
+    //devuelve la cantidad de checks inactivos en escenas especificas
+    public static int GetInactiveChecksFromScenes(params string[] sceneNames)
+    {
+        int total = 0;
+        foreach (string scene in sceneNames)
         {
-            Transform child = obj.transform.GetChild(i);
-            child.gameObject.SetActive(state.childActiveStates[i]);
+            if (_sceneChecks.ContainsKey(scene))
+            {
+                bool[] checks = _sceneChecks[scene];
+                foreach (bool check in checks)
+                {
+                    if (!check)
+                        total++;
+                }
+            }
         }
+        return total;
     }
 
-    /// <summary>
-    /// Verifica si ya se guardó un estado para este objeto
-    /// </summary>
-    public static bool HasState(GameObject obj)
+
+
+    // Verifica si un check específico está activo
+    public static bool IsCheckActive(string sceneName, int index)
     {
-        return _savedStates.ContainsKey(GetUniqueId(obj));
+        if (index < 0 || index > 2)
+            return false;
+
+        bool[] checks = GetChecksForScene(sceneName);
+        return checks[index];
     }
 
-    /// <summary>
-    /// Devuelve una clave única para el objeto: escena + nombre
-    /// </summary>
-    private static string GetUniqueId(GameObject obj)
-    {
-        return obj.scene.name + "_" + obj.name;
-    }
 
     public static void ClearAllStates()
     {
-        _savedStates.Clear();
+        _sceneChecks.Clear();
     }
 }

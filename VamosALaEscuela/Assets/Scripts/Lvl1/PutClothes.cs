@@ -29,7 +29,7 @@ public class PutClothes : MonoBehaviour//version mobile
     {
         if (PauseStatus.IsPaused()) return;
 
-        if (_isTouched) return;
+        if (_notes.IsActiveCheck2()) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
 
