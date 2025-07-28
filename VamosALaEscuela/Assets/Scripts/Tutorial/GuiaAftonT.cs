@@ -110,7 +110,7 @@ public class GuiaAftonT : MonoBehaviour
         }
 
         // Al terminar la guía, cambiar de escena
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1VM");
     }
 
     public bool IsActiveGuia() { return _isGuiaActive; } //
