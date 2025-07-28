@@ -62,13 +62,18 @@ public class MakeBed : MonoBehaviour//version mobile
     }
 
     private IEnumerator DelayCinematic()
-    {                
-        _cPJ.SetActive(true);
+    {
+        bool useRP = CheckStatus.IsCheckActive("Level1VM", 1);
+
+        if(useRP)_cRP.SetActive(true);
+        else _cPJ.SetActive(true);
+
         Debug.Log("cama hecha");
         _incomp.SetActive(false);
         _comp.SetActive(true);
         yield return new WaitForSeconds(2f);
-        _cPJ.SetActive(false);
+        if (useRP) _cRP.SetActive(false);
+        else _cPJ.SetActive(false);
 
         _notes.ActiveCheck1();//activamos el check
         _kind.GoodDecision();//subimos la barrita

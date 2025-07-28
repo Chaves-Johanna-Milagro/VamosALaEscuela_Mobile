@@ -77,6 +77,7 @@ public class BMiniAfton : MonoBehaviour//version mobile
         {
             _childs[i] = transform.GetChild(i).gameObject;
             _childs[i].SetActive(false);
+            AftonDialogStatus.StopAll();//detener cualquier dialogo
         }
 
         _button = GetComponent<Button>();
@@ -114,8 +115,8 @@ public class BMiniAfton : MonoBehaviour//version mobile
 
     private void ShowByScene()
     {
-        if (_scene == "Level1") ConcejosNvl1();
-        if (_scene == "Level2") ConcejosNvl2();
+        if (_scene == "Level1VM") ConcejosNvl1();
+        if (_scene == "Level2VM") ConcejosNvl2();
     }
 
     private void Active(bool active)
