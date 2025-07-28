@@ -6,9 +6,8 @@ public class PutClothes : MonoBehaviour//version mobile
     private GameObject _cRP;
     private GameObject _cPJ;
 
-    private bool _isTouched = false;
-
     private BNotes _notes;
+    private BKindness _kind;
 
     void Start()
     {
@@ -18,10 +17,10 @@ public class PutClothes : MonoBehaviour//version mobile
         if (CinematicStatus.HasState(gameObject))
         {
             CinematicStatus.LoadState(gameObject);
-            _isTouched = true;
             Debug.Log("restaurando estado");
         }
         _notes = Object.FindFirstObjectByType<BNotes>();
+        _kind = Object.FindFirstObjectByType<BKindness>();
     }
 
     // Update is called once per frame
@@ -53,7 +52,6 @@ public class PutClothes : MonoBehaviour//version mobile
 
     private IEnumerator DelayCinematic()
     {
-        _isTouched = true;
 
         _cRP.SetActive(true);
         Debug.Log("ropa puesta");
@@ -61,6 +59,7 @@ public class PutClothes : MonoBehaviour//version mobile
         _cRP.SetActive(false);
 
         _notes.ActiveCheck2();//activamos el check
+        _kind.GoodDecision();//subimos la barrita
 
         CinematicStatus.SaveState(gameObject);
         Debug.Log("Estado guardado");
