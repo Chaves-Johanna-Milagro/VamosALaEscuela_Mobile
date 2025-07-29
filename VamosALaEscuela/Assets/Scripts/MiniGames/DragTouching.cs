@@ -76,8 +76,8 @@ public class DragTouching : MonoBehaviour//version mobile
         worldPos.z = 0;
 
         // limita dentro del rango permitido
-        float limitX = Mathf.Clamp(worldPos.x, -18f, 18f);
-        float limitY = Mathf.Clamp(worldPos.y, -10f, 10f);
+        float limitX = Mathf.Clamp(worldPos.x, -16f, 16f);
+        float limitY = Mathf.Clamp(worldPos.y, -10f, 7.5f);
 
         transform.position = new Vector3(limitX, limitY, 0);
     }

@@ -548,6 +548,8 @@ GameObject:
   - component: {fileID: 4712334528913346442}
   - component: {fileID: 2790118397883519871}
   - component: {fileID: 7481527749985344842}
+  - component: {fileID: 93831928413058017}
+  - component: {fileID: 6577372760029975800}
   m_Layer: 0
   m_Name: CEPILLO
   m_TagString: Untagged
@@ -784,6 +786,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fa5fb43c16419d4cac64268ca7f91a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &93831928413058017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949762953502586004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038df73d46a4671428edbc87706bd807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6577372760029975800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949762953502586004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82295f3bf63c03149a3bb0c8534029de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7500243025898291938
