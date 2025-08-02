@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 1356189240483882567}
   - component: {fileID: 3682212594229282659}
   - component: {fileID: 7018614348659605349}
+  - component: {fileID: 6836211113960064837}
   m_Layer: 0
   m_Name: SANWIS
   m_TagString: Untagged
@@ -474,6 +475,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82295f3bf63c03149a3bb0c8534029de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &6836211113960064837
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60314117018948469}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &398928327298474505
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +516,7 @@ GameObject:
   - component: {fileID: 1213461175858464375}
   - component: {fileID: 4804788948933631443}
   - component: {fileID: 3544958977722283783}
+  - component: {fileID: 3256677946682748177}
   m_Layer: 0
   m_Name: BATIDO
   m_TagString: Untagged
@@ -691,6 +720,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82295f3bf63c03149a3bb0c8534029de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &3256677946682748177
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398928327298474505}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1193041208986348620
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +761,7 @@ GameObject:
   - component: {fileID: 1812502968218749595}
   - component: {fileID: 2266855843234838882}
   - component: {fileID: 3345396720424172051}
+  - component: {fileID: 3724378789216018201}
   m_Layer: 0
   m_Name: MATE
   m_TagString: Untagged
@@ -943,6 +1000,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82295f3bf63c03149a3bb0c8534029de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &3724378789216018201
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193041208986348620}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1607576926965614715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1128,7 @@ GameObject:
   - component: {fileID: 5044959570879770956}
   - component: {fileID: 1451533918275810663}
   - component: {fileID: 2809565996223226977}
+  - component: {fileID: 5041192911241742841}
   m_Layer: 0
   m_Name: SERVILLETA
   m_TagString: Untagged
@@ -1277,6 +1362,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82295f3bf63c03149a3bb0c8534029de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &5041192911241742841
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826558673684796535}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2454653904668868521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1629,7 @@ GameObject:
   - component: {fileID: 508583378334191582}
   - component: {fileID: 4877400628986953949}
   - component: {fileID: 4591658683970947304}
+  - component: {fileID: 4709385433012303101}
   m_Layer: 0
   m_Name: TE
   m_TagString: Untagged
@@ -1800,6 +1913,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82295f3bf63c03149a3bb0c8534029de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &4709385433012303101
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770404057048040189}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4768396325061648929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,7 +2337,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -2230,6 +2370,7 @@ GameObject:
   - component: {fileID: 466543931214527086}
   - component: {fileID: 7286341217977163351}
   - component: {fileID: 7250211497511132806}
+  - component: {fileID: 5677848757383895741}
   m_Layer: 0
   m_Name: PANES
   m_TagString: Untagged
@@ -2449,6 +2590,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82295f3bf63c03149a3bb0c8534029de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &5677848757383895741
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475482021312392871}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6995248412870433220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,6 +4082,7 @@ GameObject:
   - component: {fileID: 8554819483448404897}
   - component: {fileID: 8984933113446216782}
   - component: {fileID: 5549602566725081411}
+  - component: {fileID: 4306770435816910840}
   m_Layer: 0
   m_Name: GALLETAS
   m_TagString: Untagged
@@ -4187,6 +4356,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82295f3bf63c03149a3bb0c8534029de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &4306770435816910840
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818743612794995505}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &9011868727800994221
 GameObject:
   m_ObjectHideFlags: 0

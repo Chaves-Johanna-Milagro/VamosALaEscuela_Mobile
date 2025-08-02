@@ -7,9 +7,9 @@ public class MGBreakfast : MonoBehaviour//version mobile
     private GameObject _back;
 
     private GameObject _mouth;
-    private GameObject _mouthD;
-    private GameObject _mouthC;
-    private GameObject _mouthO;
+    private GameObject _mDefault;
+    private GameObject _mClose;
+    private GameObject _mOpen;
 
     private GameObject _napkin;
 
@@ -33,7 +33,9 @@ public class MGBreakfast : MonoBehaviour//version mobile
         _menu = transform.Find("Menu").gameObject;
 
         _mouth = transform.Find("Mouth").gameObject;
-        _mouthD = transform.Find("MouthDefault").gameObject;
+        _mDefault = transform.Find("MouthDefault").gameObject;
+        _mClose = transform.Find("MouthClose").gameObject;
+        _mOpen = transform.Find("MouthOpen").gameObject;
 
         _napkin = transform.Find("SERVILLETA").gameObject;
 
@@ -75,7 +77,7 @@ public class MGBreakfast : MonoBehaviour//version mobile
                 _back.SetActive(true);
                 _menu.SetActive(true);
                 _mouth.SetActive(true);
-                _mouthD.SetActive(true);
+                _mDefault.SetActive(true);
                 PlaySound("Plates");
 
                 _gAfton.GBreakfast();//active las indicaciones del mg
@@ -142,6 +144,24 @@ public class MGBreakfast : MonoBehaviour//version mobile
         _napkin.SetActive(true);
     }
 
+    public IEnumerator ChangeMouth()
+    {
+        _mDefault.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        _mOpen.SetActive(true);
+        _mDefault.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        _mClose.SetActive(true);
+        _mOpen.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        _mDefault.SetActive(true);
+        _mClose.SetActive(false);
+    }
+
+
     public bool IsSelectFood() { return _food; }
     public bool IsSelectDrink() { return _drink; }
+    public GameObject MDefault() { return _mDefault; }
+    public GameObject MOpen() { return _mOpen; }
+    public GameObject MClose() { return _mClose; }
 }
