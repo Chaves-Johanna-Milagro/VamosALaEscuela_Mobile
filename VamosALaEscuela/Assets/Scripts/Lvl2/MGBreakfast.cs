@@ -94,7 +94,7 @@ public class MGBreakfast : MonoBehaviour//version mobile
         _notes.ActiveCheck1();//activamos el check
         _kind.GoodDecision();//subimos la barrita
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         int count = transform.childCount;
         GameObject[] child = new GameObject[count];
@@ -142,20 +142,6 @@ public class MGBreakfast : MonoBehaviour//version mobile
         drink.SetActive(true);
 
         _napkin.SetActive(true);
-    }
-
-    public IEnumerator ChangeMouth()
-    {
-        _mDefault.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        _mOpen.SetActive(true);
-        _mDefault.SetActive(false);
-        yield return new WaitForSeconds(2f);
-        _mClose.SetActive(true);
-        _mOpen.SetActive(false);
-        yield return new WaitForSeconds(2f);
-        _mDefault.SetActive(true);
-        _mClose.SetActive(false);
     }
 
 
