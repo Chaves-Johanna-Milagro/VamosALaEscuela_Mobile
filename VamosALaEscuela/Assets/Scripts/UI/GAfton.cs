@@ -39,6 +39,17 @@ public class GAfton : MonoBehaviour//version mobile
 
         _textComp.text = "¡AGARRA Y ARRASTRA EL CEPILLO \nPARA LIMPIAR TUS DIENTES!";
     }
+    public void GBreakfast()
+    {
+        for (int i = 0; i < _count; i++)
+        {
+            _childs[i].SetActive(true);
+            PlaySound("afton_tutorial_desayuno");
+        }
+
+        _textComp.text = "¡PUEDES ELEGIR LA BEBIDA Y \nACOMPAÑAMIENTO QUE MAS TE GUSTE!";
+    }
+
     private void Desactive()
     {
         for (int i = 0; i < _count; i++)

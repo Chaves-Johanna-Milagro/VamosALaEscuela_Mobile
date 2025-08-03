@@ -14,7 +14,7 @@ public class BKindness : MonoBehaviour//version mobile
     private RectTransform _now;
     private float _maxY = -240;
     private float _minY = -790;
-    private float _amount = 20f;
+    private float _amount = 10f;
 
     void Start()
     {

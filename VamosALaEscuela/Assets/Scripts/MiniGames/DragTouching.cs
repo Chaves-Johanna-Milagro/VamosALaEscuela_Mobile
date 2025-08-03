@@ -6,6 +6,25 @@ public class DragTouching : MonoBehaviour//version mobile
     private bool isDragging = false;
     private Vector3 offset;
 
+    private Vector2 minBounds, maxBounds;
+    private Camera cam;
+
+    void Start()
+    {
+        cam = Camera.main;
+        SpriteRenderer mapRenderer = GameObject.FindGameObjectWithTag("Map")?.GetComponent<SpriteRenderer>();
+        Bounds bounds = mapRenderer.bounds;
+
+        // Tamaño del objeto para ajustar los límites
+        SpriteRenderer objRenderer = GetComponent<SpriteRenderer>();
+        float halfWidth = objRenderer.bounds.extents.x;
+        float halfHeight = objRenderer.bounds.extents.y;
+
+        // Límites ajustados considerando el tamaño del objeto
+        minBounds = new Vector2(bounds.min.x + halfWidth, bounds.min.y + halfHeight);
+        maxBounds = new Vector2(bounds.max.x - halfWidth, bounds.max.y - halfHeight);
+    }
+
     void Update()
     {
         if (PauseStatus.IsPaused()) return;
@@ -72,14 +91,13 @@ public class DragTouching : MonoBehaviour//version mobile
     }
     void LimitMove(Vector3 inputPos)
     {
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(inputPos) + offset;
+        Vector3 worldPos = cam.ScreenToWorldPoint(inputPos) + offset;
         worldPos.z = 0;
 
-        // limita dentro del rango permitido
-        float limitX = Mathf.Clamp(worldPos.x, -18f, 18f);
-        float limitY = Mathf.Clamp(worldPos.y, -10f, 10f);
+        float limitedX = Mathf.Clamp(worldPos.x, minBounds.x, maxBounds.x);
+        float limitedY = Mathf.Clamp(worldPos.y, minBounds.y -5f, maxBounds.y);
 
-        transform.position = new Vector3(limitX, limitY, 0);
+        transform.position = new Vector3(limitedX, limitedY, 0);
     }
 
 }
