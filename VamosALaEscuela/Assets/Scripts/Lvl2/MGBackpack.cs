@@ -1,44 +1,30 @@
 using UnityEngine;
 using System.Collections;
-public class MGBreakfast : MonoBehaviour//version mobile
+using System.Collections.Generic;
+using UnityEditor;
+
+public class MGBackpack : MonoBehaviour
 {
-    //pa el activar el minijuego del desayuno
-
-    private GameObject _back;
-
-    private GameObject _mouth;
-    private GameObject _mDefault;
-    private GameObject _mClose;
-    private GameObject _mOpen;
-
-    private GameObject _napkin;
+    private GameObject[] _childs;
+    private int _count;
 
     private BNotes _notes;
     private BKindness _kind;
 
     private GAfton _gAfton;
 
-    private GameObject _menu;
-
-    private bool _food = false;
-    private bool _drink = false;
-   
-    private bool _selectF = false;
-    private bool _selectD = false;
-
     private bool _completed = false;
+    
     void Start()
     {
-        _back = transform.Find("Background").gameObject;
+        _count = transform.childCount;
+        _childs = new GameObject[_count];
 
-        _menu = transform.Find("Menu").gameObject;
-
-        _mouth = transform.Find("Mouth").gameObject;
-        _mDefault = transform.Find("MouthDefault").gameObject;
-        _mClose = transform.Find("MouthClose").gameObject;
-        _mOpen = transform.Find("MouthOpen").gameObject;
-
-        _napkin = transform.Find("SERVILLETA").gameObject;
+        for (int i = 0; i < _count; i++)
+        {
+            _childs[i] = transform.GetChild(i).gameObject;
+            _childs[i].SetActive(false);
+        }
 
         _notes = Object.FindFirstObjectByType<BNotes>();
         _kind = Object.FindFirstObjectByType<BKindness>();
@@ -57,7 +43,7 @@ public class MGBreakfast : MonoBehaviour//version mobile
     {
         if (PauseStatus.IsPaused()) return;
 
-        if (_notes.IsActiveCheck1()) return;
+        if (_notes.IsActiveCheck2()) return;
 
         if (TouchInUIStatus.IsPointerOverUI_PC() || TouchInUIStatus.IsPointerOverUI_Mobile()) return;
 
@@ -75,26 +61,25 @@ public class MGBreakfast : MonoBehaviour//version mobile
 
             if (TouchObjectStatus.TouchedThisObject(screenPoint, gameObject))
             {
-                _back.SetActive(true);
-                _menu.SetActive(true);
-                _mouth.SetActive(true);
-                _mDefault.SetActive(true);
-                PlaySound("Plates");
+                for (int i = 0; i < _count; i++)
+                {
+                    _childs[i].SetActive(true);
+                }
+
+                PlaySound("BackpackOpening");
 
                 _gAfton.GBreakfast();//active las indicaciones del mg
 
             }
         }
 
-       
     }
-
     public IEnumerator Complete()
     {
         if (_completed) yield break;
         _completed = true;
 
-        _notes.ActiveCheck1();//activamos el check
+        _notes.ActiveCheck2();//activamos el check
         _kind.GoodDecision();//subimos la barrita
 
         yield return new WaitForSeconds(1.5f);
@@ -119,38 +104,4 @@ public class MGBreakfast : MonoBehaviour//version mobile
             if (sound.clip != null && sound.clip.name == name) sound.Play();
         }
     }
-
-    public void SetFood(string name)
-    {
-        if(_selectF) return;
-
-        _food = true;
-        _selectF = true;
-        Debug.Log(_food);
-
-        GameObject food = transform.Find(name).gameObject;
-        food.SetActive(true);
-
-        _napkin.SetActive(true);
-    }
-    public void SetDrink(string name)
-    {
-        if (_selectD) return;
-
-        _drink = true;
-        _selectD = true;
-        Debug.Log(_drink);
-
-        GameObject drink = transform.Find(name).gameObject;
-        drink.SetActive(true);
-
-        _napkin.SetActive(true);
-    }
-
-
-    public bool IsSelectFood() { return _food; }
-    public bool IsSelectDrink() { return _drink; }
-    public GameObject MDefault() { return _mDefault; }
-    public GameObject MOpen() { return _mOpen; }
-    public GameObject MClose() { return _mClose; }
 }
