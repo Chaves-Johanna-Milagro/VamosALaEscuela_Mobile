@@ -59,12 +59,12 @@ public class BNotes : MonoBehaviour//version mobile
         _text.SetActive(activated);
         _checks.SetActive(activated);
 
-        if (_scene == "Level1VM")
+        if (_scene == "Level1M")
         {
             _oLevel = transform.Find("Lvl1").gameObject;
             _oLevel.SetActive(activated);
         }
-        if (_scene == "Level2VM")
+        if (_scene == "Level2M")
         {
             _oLevel = transform.Find("Lvl2").gameObject;
             _oLevel.SetActive(activated);

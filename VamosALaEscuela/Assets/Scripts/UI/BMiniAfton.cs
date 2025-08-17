@@ -115,8 +115,8 @@ public class BMiniAfton : MonoBehaviour//version mobile
 
     private void ShowByScene()
     {
-        if (_scene == "Level1VM") ConcejosNvl1();
-        if (_scene == "Level2VM") ConcejosNvl2();
+        if (_scene == "Level1M") ConcejosNvl1();
+        if (_scene == "Level2M") ConcejosNvl2();
     }
 
     private void Active(bool active)
