@@ -34,7 +34,7 @@ public class SetUpGame : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("IntroVM"); //la intro en version masculina
+        SceneManager.LoadScene("IntroM"); //la intro en version masculina
         SaveName();
     }
 
