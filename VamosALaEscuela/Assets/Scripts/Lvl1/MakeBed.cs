@@ -64,7 +64,7 @@ public class MakeBed : MonoBehaviour//version mobile
     private IEnumerator DelayCinematic()
     {
         PlaySound("tender_cama");
-        bool useRP = CheckStatus.IsCheckActive("Level1VM", 1);
+        bool useRP = CheckStatus.IsCheckActive("Level1M", 1);
 
         if(useRP)_cRP.SetActive(true);
         else _cPJ.SetActive(true);

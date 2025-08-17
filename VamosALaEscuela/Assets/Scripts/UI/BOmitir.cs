@@ -19,7 +19,7 @@ public class BOmitir : MonoBehaviour
 
     private void Omitir()
     {
-        if (_scene == "TutorialVM") SceneManager.LoadScene("Level1VM");
+        if (_scene == "TutorialM") SceneManager.LoadScene("Level1M");
     }
 
 
